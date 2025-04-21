@@ -72,4 +72,9 @@ chmod +x $RL_DIR/run_rl_swarm.sh
 
 # === 11. 启动 screen 会话并限制内存为 18GB ===
 echo "🚀 启动 RL Swarm（内存限制为 18GB）..."
-screen -dmS swarm bash -c "uli
+screen -dmS swarm bash -c "ulimit -v 18874368; cd $RL_DIR && source $VENV_PATH/bin/activate && ./run_rl_swarm.sh"
+
+# === 12. 提示完成 ===
+echo "✅ RL Swarm 已部署并在 screen 会话中运行。"
+echo "👉 输入以下命令进入 screen 查看运行情况："
+echo "     screen -r swarm"
