@@ -26,6 +26,9 @@ pip install --upgrade pip
 pip install -r requirements.txt
 pip install -r requirements-hivemind.txt
 
+# === 6.1 安装 hivemind 模块 ===
+pip install hivemind
+
 # 修复 protobuf 版本
 pip uninstall -y protobuf
 pip install protobuf==5.27.5
