@@ -12,7 +12,8 @@
 打开终端，复制粘贴以下命令，自动完成全部依赖安装和环境配置：
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/essenwo/gensyn-rl-swarm-linux-setup/main/setup_rl_swarm_linux.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/essenwo/gensyn-rl-swarm-linux-setup/main/setup_rl_swarm.sh)"
+
 
 ⏱️ 安装过程会根据你的网络和设备环境耗时 5-15 分钟不等。
 
