@@ -11,7 +11,7 @@ cd $RL_PROJECT_DIR
 
 # === 3. 安装依赖工具（需 sudo）===
 sudo apt update
-sudo apt install -y curl git screen python3.10 python3.10-venv
+sudo apt install -y curl git python3.10 python3.10-venv screen  # 确保安装 screen
 
 # === 4. 克隆仓库 ===
 git clone https://github.com/gensyn-ai/rl-swarm.git
