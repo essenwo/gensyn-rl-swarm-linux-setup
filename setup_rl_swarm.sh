@@ -28,8 +28,23 @@ fi
 
 # ----------- 安装依赖 ----------- 
 echo "📦 安装依赖项：curl、git、python3.12、pip、nodejs、yarn、screen..."
+
+# 添加 Python 3.12 的 PPA 源并安装
 sudo apt update
-sudo apt install -y curl git screen nodejs yarn python3.12 python3.12-venv python3-pip
+sudo apt install -y software-properties-common
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install -y python3.12 python3.12-venv python3.12-distutils
+
+# 安装其他基础工具
+sudo apt install -y curl git screen
+
+# 安装 Node.js（使用 NodeSource 源）
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# 安装 Yarn（通过 npm）
+npm install -g yarn
 
 # ----------- 设置默认 Python3.12 ----------- 
 echo "🐍 设置 Python3.12 为默认版本..."
@@ -94,4 +109,3 @@ screen -S gensyn bash -c '
   chmod +x run_rl_swarm.sh
   ./run_rl_swarm.sh
 '
-
