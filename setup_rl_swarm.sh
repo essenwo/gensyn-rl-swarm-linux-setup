@@ -34,7 +34,15 @@ sudo apt update
 sudo apt install -y software-properties-common
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install -y python3.12 python3.12-venv python3.12-distutils
+sudo apt install -y python3.12 python3.12-venv || {
+  echo "❌ 安装 Python3.12 失败，退出。"
+  exit 1
+}
+
+# 修复无法安装 python3.12-distutils 的情况
+echo "🔧 使用 ensurepip 安装 pip 和 setuptools（代替 distutils）..."
+python3.12 -m ensurepip --upgrade
+python3.12 -m pip install --upgrade pip setuptools
 
 # 安装其他基础工具
 sudo apt install -y curl git screen
