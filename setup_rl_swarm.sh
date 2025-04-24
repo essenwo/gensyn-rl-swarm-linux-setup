@@ -51,8 +51,13 @@ sudo apt install -y curl git screen
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt install -y nodejs
 
-# 安装 Yarn（通过 npm）
-npm install -g yarn
+# 安装 Yarn（通过官方 APT 源）
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install -y yarn
+
+# 如果你更喜欢通过 npm 安装 Yarn，可取消注释以下行（不推荐）：
+# npm install -g yarn
 
 # ----------- 设置默认 Python3.12 ----------- 
 echo "🐍 设置 Python3.12 为默认版本..."
