@@ -45,7 +45,14 @@ python3.12 -m ensurepip --upgrade
 python3.12 -m pip install --upgrade pip setuptools
 
 # 安装其他基础工具
-sudo apt install -y curl git screen
+sudo apt install -y curl git screen wget
+
+# ----------- 安装 Ngrok ----------- 
+echo "📦 安装 Ngrok..."
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+tar -xvzf ngrok-v3-stable-linux-amd64.tgz
+sudo mv ngrok /usr/local/bin/
+rm ngrok-v3-stable-linux-amd64.tgz
 
 # 安装 Node.js（使用 NodeSource 源）
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -105,6 +112,16 @@ pid=$(lsof -ti:3000) && [ -n "$pid" ] && kill -9 $pid && echo "✅ 杀掉 3000 �
 
 # ----------- 启动 screen 会话 ----------- 
 echo "🖥️ 启动并进入 screen 会话 gensyn..."
+echo -e "\n⚠️ 重要提示 ⚠️"
+echo "当运行到 [ ] Waiting for you to complete the login process... 这一步时:"
+echo "1. 请按 Ctrl+A+D 退出当前 screen 会话"
+echo "2. 然后输入命令: screen -S ngrok"
+echo "3. 在新的 screen 会话中执行: ngrok http 3000"
+echo "4. 复制生成的 ngrok 域名链接，在浏览器中打开并完成邮箱登录验证"
+echo "5. 验证完成后，按 Ctrl+A+D 退出 ngrok screen"
+echo "6. 输入命令: screen -r gensyn 回到原先的会话继续运行"
+echo -e "\n按任意键继续..."
+read -n 1
 
 sleep 2
 screen -S gensyn bash -c '
@@ -122,3 +139,11 @@ screen -S gensyn bash -c '
   chmod +x run_rl_swarm.sh
   ./run_rl_swarm.sh
 '
+
+echo "⚠️ 登录验证步骤说明 ⚠️"
+echo "如果您看到此消息，说明您已退出了 gensyn 会话。请按以下步骤完成登录验证："
+echo "1. 输入命令: screen -S ngrok"
+echo "2. 在新的 screen 会话中执行: ngrok http 3000"
+echo "3. 复制生成的 ngrok 域名链接，在浏览器中打开并完成邮箱登录验证"
+echo "4. 验证完成后，按 Ctrl+A+D 退出 ngrok screen"
+echo "5. 输入命令: screen -r gensyn 回到原先的会话继续运行"
