@@ -131,7 +131,7 @@ screen -S gensyn bash -c '
   python3.12 -m venv .venv
   source .venv/bin/activate
   
-  pip install protobuf==5.27.5
+  pip install protobuf==6.30.0
 
   echo "🔧 设置 PyTorch MPS 环境变量（Linux 可省略或注释）..."
   export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
